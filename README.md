@@ -10,9 +10,86 @@ Nothing clever or twee!
 ##  Components
 
 - `/lib/map` for gate-based replacements for door arms in `++by`.
+  - `++all`
+  - `++and`
+  - `++any`
+  - `++apply`
+  - `++apt`
+  - `++bif`
+  - `++del`
+  - `++dif`
+  - `++diff-left`
+  - `++diff-right`
+  - `++diff-symmetric`
+  - `++dig`
+  - `++filter`
+  - `++gas`
+  - `++get`
+  - `++got`
+  - `++gut`
+  - `++has`
+  - `++int`
+  - `++intersect`
+  - `++jab`
+  - `++key`
+  - `++keys`
+  - `++mar`
+  - `++make`
+  - `++or`
+  - `++pairs`
+  - `++put`
+  - `++reduce`
+  - `++rep`
+  - `++rib`
+  - `++run`
+  - `++rut`
+  - `++size`
+  - `++tap`
+  - `++transform-key-value`
+  - `++transform-value`
+  - `++transform-product`
+  - `++uni`
+  - `++union`
+  - `++uno`
+  - `++unify`
+  - `++urn`
+  - `++wyt`
+  - `++val`
+  - `++values`
 - `/lib/set` for gate-based replacements for door arms in `++in`.
+  - `++all`
+  - `++and`
+  - `++any`
+  - `++apply`
+  - `++apt`
+  - `++bif`
+  - `++del`
+  - `++dif`
+  - `++diff-left`
+  - `++diff-right`
+  - `++diff-symmetric`
+  - `++dig`
+  - `++filter`
+  - `++gas`
+  - `++has`
+  - `++int`
+  - `++intersect`
+  - `++make`
+  - `++or`
+  - `++put`
+  - `++reduce`
+  - `++rep`
+  - `++run`
+  - `++size`
+  - `++tap`
+  - `++uni`
+  - `++union`
+  - `++wyt`
+  - `++values`
+- `/lib/maplist` for gate-based replacements for door arms in `++ja` for `+$jar`s (`map` of `list`).
+- `/lib/mapset` for gate-based replacements for door arms in `++ju` for `+$jug`s (`map` of `set`).
+- `/lib/mip` for gate-based replacements for door arms for `+$mip`s (`map` of `map`).
 - `/lib/mop` for gate-based replacements for door arms for `+$mop`s.
-- `/lib/mip` for gate-based replacements for door arms for `+$mip`s.
 - `/lib/list` for list functions (e.g. `++append` for `++weld`).
 
 ##  Related Projects

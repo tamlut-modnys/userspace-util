@@ -1,4 +1,5 @@
-::  map utilities
+  ::  /lib/map
+::::  Utilities to replicate ++by behavior via gates.
 ::
 |%
 :: +all: [(map) gate] -> ?
@@ -6,7 +7,7 @@
 :: Computes the logical AND on the results of slamming
 :: every element in map a with gate b.
 :: Examples
-:: > =mymap (malt `(list [@tas *])`~[a+1 b+[2 3]])
+:: > =mymap (make `(list [@tas *])`~[a+1 b+[2 3]])
 :: > (all mymap |=(a=* ?@(a & |)))
 :: %.n
 :: Source
@@ -19,7 +20,7 @@
 :: Computes the logical AND on the results of slamming
 :: every element in map a with gate b.  Alias for +all.
 :: Examples
-:: > =mymap (malt `(list [@tas *])`~[a+1 b+[2 3]])
+:: > =mymap (make `(list [@tas *])`~[a+1 b+[2 3]])
 :: > (and mymap |=(a=* ?@(a & |)))
 :: %.n
 :: Source
@@ -29,7 +30,7 @@
 :: Computes the logical OR on the results of slamming
 :: every element in map a with gate b.
 :: Examples
-:: > =mymap (malt `(list [@tas *])`~[a+1 b+[2 3]])
+:: > =mymap (make `(list [@tas *])`~[a+1 b+[2 3]])
 :: > (any mymap |=(a=* ?@(a & |)))
 :: %.y
 :: Source
@@ -44,7 +45,7 @@
 :: with the values transformed by the gate.  Alias for
 :: +urn.
 :: Examples
-:: > =mymap `(map @ @)`(malt ~[[1 1] [2 2] [3 3]])
+:: > =mymap `(map @ @)`(make ~[[1 1] [2 2] [3 3]])
 :: > mymap
 :: {[p=1 q=1] [p=2 q=2] [p=3 q=3]}
 :: 
@@ -57,7 +58,7 @@
 :: Check correctness.  Computes whether input has a
 :: correct horizontal order and a correct vertical order.
 :: Examples
-:: > =a (malt `(list [@tas @])`~[a+1 b+2 c+3 d+4 e+5])
+:: > =a (make `(list [@tas @])`~[a+1 b+2 c+3 d+4 e+5])
 :: > ~(apt by a)
 :: %.y
 :: > =z ?~(a ~ a(p.n `@tas`%z))
@@ -75,7 +76,7 @@
 :: Splits the map into two maps, each containing the items
 :: either side of the key but not including the key.
 :: Examples
-:: > =a (malt `(list [@tas @])`~[a+1 b+2 c+3 d+4 e+5])
+:: > =a (make `(list [@tas @])`~[a+1 b+2 c+3 d+4 e+5])
 :: > (~(bif by a) b+2)
 :: [l=[n=[p=%e q=5] l=~ r=~] r=[n=[p=%d q=4] l=~ r=[n=[p=%c q=3] l={[p=%a q=1]} r={}]]]
 :: > `[(map @tas @) (map @tas @)]`(~(bif by a) b+2)
@@ -88,7 +89,7 @@
 ::
 :: Returns a new map that does not contain the key
 :: Examples
-:: > =/  mymap  (malt `(list (pair @ud @ud))`~[[%1 1] [%2 2]])
+:: > =/  mymap  (make `(list (pair @ud @ud))`~[[%1 1] [%2 2]])
 ::   (del mymap %2)
 :: [n=[p=p=1 q=q=1] l=~ r=~]
 :: Source
@@ -102,8 +103,8 @@
 :: map that contains the items in the first map that are not
 :: in the second map.
 :: Examples
-:: > =a `(map @tas @)`(malt (limo ~[a+1 b+2 c+3 d+4]))
-:: > =b `(map @tas @)`(malt (limo ~[c+3 d+4 e+5 f+6]))
+:: > =a `(map @tas @)`(make (limo ~[a+1 b+2 c+3 d+4]))
+:: > =b `(map @tas @)`(make (limo ~[c+3 d+4 e+5 f+6]))
 :: > a
 :: {[p=%b q=2] [p=%d q=4] [p=%a q=1] [p=%c q=3]}
 :: > b
@@ -121,8 +122,8 @@
 :: map that contains the items in the first map that are not
 :: in the second map.  Alias for +dif.
 :: Examples
-:: > =a `(map @tas @)`(malt (limo ~[a+1 b+2 c+3 d+4]))
-:: > =b `(map @tas @)`(malt (limo ~[c+3 d+4 e+5 f+6]))
+:: > =a `(map @tas @)`(make (limo ~[a+1 b+2 c+3 d+4]))
+:: > =b `(map @tas @)`(make (limo ~[c+3 d+4 e+5 f+6]))
 :: > a
 :: {[p=%b q=2] [p=%d q=4] [p=%a q=1] [p=%c q=3]}
 :: > b
@@ -137,8 +138,8 @@
 :: map that contains the items in the second map that are not
 :: in the first map.
 :: Examples
-:: > =a `(map @tas @)`(malt (limo ~[a+1 b+2 c+3 d+4]))
-:: > =b `(map @tas @)`(malt (limo ~[c+3 d+4 e+5 f+6]))
+:: > =a `(map @tas @)`(make (limo ~[a+1 b+2 c+3 d+4]))
+:: > =b `(map @tas @)`(make (limo ~[c+3 d+4 e+5 f+6]))
 :: > a
 :: {[p=%b q=2] [p=%d q=4] [p=%a q=1] [p=%c q=3]}
 :: > b
@@ -156,8 +157,8 @@
 :: map that contains the items that are in one map but not
 :: in the other.
 :: Examples
-:: > =a `(map @tas @)`(malt (limo ~[a+1 b+2 c+3 d+4]))
-:: > =b `(map @tas @)`(malt (limo ~[c+3 d+4 e+5 f+6]))
+:: > =a `(map @tas @)`(make (limo ~[a+1 b+2 c+3 d+4]))
+:: > =b `(map @tas @)`(make (limo ~[c+3 d+4 e+5 f+6]))
 :: > a
 :: {[p=%b q=2] [p=%d q=4] [p=%a q=1] [p=%c q=3]}
 :: > b
@@ -175,13 +176,14 @@
 ::
 :: Produce the address of key within map.
 :: Examples
-:: > =mymap `(map @tas @)`(malt (limo ~[a+1 b+2 c+3 d+4]))
+:: > =mymap `(map @tas @)`(make (limo ~[a+1 b+2 c+3 d+4]))
 :: > (dig mymap %b)
 :: [~ 252]
 :: > (dig mymap %b)
 :: [~ 2]
 :: > (dig by mymap %e)
 :: ~
+:: Source
 ++  dig
   |*  [m=(map) k=*]
   ^+  (unit @)
@@ -191,11 +193,11 @@
 :: Produces a new map with only the key-value pairs for
 :: which the gate produces %.y against the value.
 :: Examples
-:: > =mymap `(map @tas @)`(malt (limo ~[a+1 b+2 c+3 d+4]))
+:: > =mymap `(map @tas @)`(make (limo ~[a+1 b+2 c+3 d+4]))
 :: > mymap
 :: {[p=%b q=2] [p=%d q=4] [p=%a q=1] [p=%c q=3]}
-:: > `(map @tas @)`(filter mymap (cury gte 2))
-:: {[p=%b q=2] [p=%a q=1]}
+:: > `(map @tas @)`(filter mymap (curr gth 2))
+:: {[p=%d q=4] [p=%c q=3]}
 :: Source
 ++  filter
   |*  [a=(map) b=$-(* ?)]
@@ -206,22 +208,23 @@
   ?.  (b +.i.kvl)
     $(kvl t.kvl)
   $(kvl t.kvl, res [i.kvl res])
-:: +gas: [(map) noun] -> ?
+:: +gas: [(map) (list)] -> (map)
 ::
 :: Insert list of key-value pairs into map.
 :: Examples
-:: > =mymap `(map @tas @)`(malt (limo ~[a+1 b+2 c+3 d+4]))
+:: > =mymap `(map @tas @)`(make (limo ~[a+1 b+2 c+3 d+4]))
 :: > mymap
 :: {[p=%b q=2] [p=%d q=4] [p=%a q=1] [p=%c q=3]}
 :: > `(map @tas @)`(gas mymap ~[e+5 f+6 g+7])
 :: {[p=%e q=5] [p=%b q=2] [p=%d q=4] [p=%f q=6] [p=%g q=7] [p=%a q=1] [p=%c q=3]}
-:: > =a `(map @tas @)`(malt (limo ~[a+1 b+2]))
+:: > =a `(map @tas @)`(make (limo ~[a+1 b+2]))
 :: > a
 :: {[p=%b q=2] [p=%a q=1]}
 :: > `(map @tas @)`(gas mymap ~[a+100 b+200])
 :: {[p=%b q=200] [p=%a q=100]}
 :: > `(map @tas @)`(gas `(map @tas @)`~) ~[a+100 b+200])
 :: {[p=%b q=200] [p=%a q=100]}
+:: Source
 ++  gas
   |*  [m=(map) l=(list (pair))]
   ^+  m
@@ -230,7 +233,7 @@
 ::
 :: Returns the unit value at key in map.
 :: Examples
-:: > =/  mymap  (malt `(list (pair @ud @ud))`~[[%1 1] [%2 2]])
+:: > =/  mymap  (make `(list (pair @ud @ud))`~[[%1 1] [%2 2]])
 ::   (get mymap %2)
 :: [~ q=2]
 :: Source
@@ -241,7 +244,7 @@
 ::
 :: Returns the value at key in map; crash if nonexistent.
 :: Examples
-:: > =/  mymap  (malt `(list (pair @ud @ud))`~[[%1 1] [%2 2]])
+:: > =/  mymap  (make `(list (pair @ud @ud))`~[[%1 1] [%2 2]])
 ::   (got mymap %2)
 :: q=2
 :: Source
@@ -252,7 +255,7 @@
 ::
 :: Returns the value at key in map; default if nonexistent.
 :: Examples
-:: > =/  mymap  (malt `(list (pair @ud @ud))`~[[%1 1] [%2 2]])
+:: > =/  mymap  (make `(list (pair @ud @ud))`~[[%1 1] [%2 2]])
 ::   (gut mymap %2 q=5)
 :: q=2
 ::   (gut mymap %3 q=5)
@@ -265,7 +268,7 @@
 ::
 :: Returns whether map contains key.
 :: Examples
-:: > =mymap `(map @tas @)`(malt (limo ~[a+1 b+2 c+3 d+4]))
+:: > =mymap `(map @tas @)`(make (limo ~[a+1 b+2 c+3 d+4]))
 :: > mymap
 :: {[p=%b q=2] [p=%d q=4] [p=%a q=1] [p=%c q=3]}
 :: > (has mymap %a)
@@ -283,8 +286,8 @@
 :: of the same type.  In case of conflict, the value from
 :: the first map is used.
 :: Examples
-:: > =a `(map @tas @)`(malt (limo ~[a+1 b+2 c+3 d+4]))
-:: > =b `(map @tas @)`(malt (limo ~[c+3 d+4 e+5 f+6]))
+:: > =a `(map @tas @)`(make (limo ~[a+1 b+2 c+3 d+4]))
+:: > =b `(map @tas @)`(make (limo ~[c+3 d+4 e+5 f+6]))
 :: > a
 :: {[p=%b q=2] [p=%d q=4] [p=%a q=1] [p=%c q=3]}
 :: > b
@@ -292,8 +295,8 @@
 ::
 :: > `(map @tas @)`(int a b)
 :: {[p=%d q=4] [p=%c q=3]}
-:: > =a `(map @tas @)`(malt (limo ~[a+1 b+2]))
-:: > =b `(map @tas @)`(malt (limo ~[a+100 b+200]))
+:: > =a `(map @tas @)`(make (limo ~[a+1 b+2]))
+:: > =b `(map @tas @)`(make (limo ~[a+100 b+200]))
 :: > a
 :: {[p=%b q=2] [p=%a q=1]}
 :: > b
@@ -312,8 +315,8 @@
 :: of the same type.  In case of conflict, the value from
 :: the first map is used.  Alias for +int.
 :: Examples
-:: > =a `(map @tas @)`(malt (limo ~[a+1 b+2 c+3 d+4]))
-:: > =b `(map @tas @)`(malt (limo ~[c+3 d+4 e+5 f+6]))
+:: > =a `(map @tas @)`(make (limo ~[a+1 b+2 c+3 d+4]))
+:: > =b `(map @tas @)`(make (limo ~[c+3 d+4 e+5 f+6]))
 :: > a
 :: {[p=%b q=2] [p=%d q=4] [p=%a q=1] [p=%c q=3]}
 :: > b
@@ -321,8 +324,8 @@
 ::
 :: > `(map @tas @)`(int a b)
 :: {[p=%d q=4] [p=%c q=3]}
-:: > =a `(map @tas @)`(malt (limo ~[a+1 b+2]))
-:: > =b `(map @tas @)`(malt (limo ~[a+100 b+200]))
+:: > =a `(map @tas @)`(make (limo ~[a+1 b+2]))
+:: > =b `(map @tas @)`(make (limo ~[a+100 b+200]))
 :: > a
 :: {[p=%b q=2] [p=%a q=1]}
 :: > b
@@ -337,7 +340,7 @@
 :: Produces a map with the value at key transformed by the
 :: gate.
 :: Examples
-:: > =a `(map @tas @)`(malt (limo ~[a+1 b+2 c+3 d+4]))
+:: > =a `(map @tas @)`(make (limo ~[a+1 b+2 c+3 d+4]))
 :: > a
 :: {[p=%b q=2] [p=%d q=4] [p=%a q=1] [p=%c q=3]}
 :: 
@@ -360,7 +363,7 @@
 ::
 :: Produces the set of all keys in the map.
 :: Examples
-:: > =mymap `(map @tas @)`(malt (limo ~[a+1 b+2 c+3 d+4]))
+:: > =mymap `(map @tas @)`(make (limo ~[a+1 b+2 c+3 d+4]))
 :: > (key mymap)
 :: {%b %d %a %c}
 ++  key
@@ -371,7 +374,7 @@
 ::
 :: Produces the set of all keys in the map.  Alias for +key.
 :: Examples
-:: > =mymap `(map @tas @)`(malt (limo ~[a+1 b+2 c+3 d+4]))
+:: > =mymap `(map @tas @)`(make (limo ~[a+1 b+2 c+3 d+4]))
 :: > (keys mymap)
 :: {%b %d %a %c}
 ++  keys  key
@@ -380,7 +383,7 @@
 :: Produces map with the addition of key-value pair if
 :: the unit value is a nonempty.  Else delete the key.
 :: Examples
-:: > =mymap `(map @tas @)`(malt (limo ~[a+1 b+2 c+3 d+4]))
+:: > =mymap `(map @tas @)`(make (limo ~[a+1 b+2 c+3 d+4]))
 :: > mymap
 :: {[p=%b q=2] [p=%d q=4] [p=%a q=1] [p=%c q=3]}
 :: 
@@ -396,12 +399,21 @@
   |*  [m=(map) k=* v=(unit *)]
   ^+  m
   (~(mar by m) k v)
+:: +make: (list (pair)) -> (map)
+::
+:: Produces a map from a list of key-value pairs.
+:: Alias for +malt.
+:: Examples
+:: > `(map @tas @)`(make ~[[a 1] [b 2] [c 3] [d 4]])
+:: {[p=%b q=2] [p=%d q=4] [p=%a q=1] [p=%c q=3]}
+:: Source
+++  make  malt
 :: +or: [(map) gate] -> ?
 ::
 :: Computes the logical OR on the results of slamming
 :: every element in map a with gate b.  Alias for +any.
 :: Examples
-:: > =mymap (malt `(list [@tas *])`~[a+1 b+[2 3]])
+:: > =mymap (make `(list [@tas *])`~[a+1 b+[2 3]])
 :: > (or mymap |=(a=* ?@(a & |)))
 :: %.y
 :: Source
@@ -411,7 +423,7 @@
 :: Produces a list of key-value pairs in the map.
 :: Alias for +tap.
 :: Examples
-:: > =mymap `(map @ @)`(malt ~[[1 1] [2 2] [3 3] [4 4] [5 5]])
+:: > =mymap `(map @ @)`(make ~[[1 1] [2 2] [3 3] [4 4] [5 5]])
 :: > (pairs mymap)
 :: ~[[p=4 q=4] [p=3 q=3] [p=2 q=2] [p=1 q=1] [p=5 q=5]]
 :: Source
@@ -420,7 +432,7 @@
 ::
 :: Returns a new map that contains the new value at key
 :: Examples
-:: > =/  mymap  (malt `(list (pair @ud @ud))`~[[%1 1] [%2 2]])
+:: > =/  mymap  (make `(list (pair @ud @ud))`~[[%1 1] [%2 2]])
 ::   (put mymap %3 3)
 :: [n=[p=p=2 q=q=2] l=[n=[p=p=1 q=q=1] l=~ r=~] r=[n=[p=p=3 q=q=3] l=~ r=~]]
 :: Source
@@ -433,7 +445,7 @@
 :: Reduce; accumulate the elements of map using gate.
 :: Alias for +rep.
 :: Examples
-:: > =mymap `(map @tas @)`(malt (limo ~[a+1 b+2 c+3 d+4]))
+:: > =mymap `(map @tas @)`(make (limo ~[a+1 b+2 c+3 d+4]))
 :: > mymap
 :: {[p=%b q=2] [p=%d q=4] [p=%a q=1] [p=%c q=3]}
 :: > (rep mymap |=([p=[@tas @] q=@] ~&([p q] (add +.p q))))
@@ -448,7 +460,7 @@
 ::
 :: Reduce; accumulate the elements of map using gate.
 :: Examples
-:: > =mymap `(map @tas @)`(malt (limo ~[a+1 b+2 c+3 d+4]))
+:: > =mymap `(map @tas @)`(make (limo ~[a+1 b+2 c+3 d+4]))
 :: > mymap
 :: {[p=%b q=2] [p=%d q=4] [p=%a q=1] [p=%c q=3]}
 :: > (rep mymap |=([p=[@tas @] q=@] ~&([p q] (add +.p q))))
@@ -469,7 +481,7 @@
 :: accepts a sample of the form [[key value] accumulator]
 :: and yields a product like [accumulator [key value]].
 :: Examples
-:: > =mymap `(map @t @)`(malt ~[['a' 1] ['b' 2] ['c' 3] ['d' 4] ['e' 5]])
+:: > =mymap `(map @t @)`(make ~[['a' 1] ['b' 2] ['c' 3] ['d' 4] ['e' 5]])
 :: > mymap
 :: {[p='e' q=5] [p='b' q=2] [p='d' q=4] [p='a' q=1] [p='c' q=3]}
 :: 
@@ -489,7 +501,7 @@
 ::
 :: Transform values in the map using the gate.
 :: Examples
-:: > =mymap `(map @t @)`(malt ~[['a' 1] ['b' 2] ['c' 3] ['d' 4] ['e' 5]])
+:: > =mymap `(map @t @)`(make ~[['a' 1] ['b' 2] ['c' 3] ['d' 4] ['e' 5]])
 :: > `(map @t @)`(run mymap dec)
 :: {[p='e' q=4] [p='b' q=1] [p='d' q=3] [p='a' q=0] [p='c' q=2]}
 :: Source
@@ -501,7 +513,7 @@
 ::
 :: Transform key-value pairs in the map using the gate.
 :: Examples
-:: > =mymap `(map @ @)`(malt ~[[1 1] [2 2] [3 3] [4 4] [5 5]])
+:: > =mymap `(map @ @)`(make ~[[1 1] [2 2] [3 3] [4 4] [5 5]])
 :: > =gate |=  [k=@ v=@]
 ::         ?:  (gth v 2)
 ::           (mul k v)
@@ -517,8 +529,8 @@
 ::
 :: Produces the depth (size) of the map.  Alias for +wyt.
 :: Examples
-:: > =a `(map @ @)`(malt ~[[1 1] [2 2] [3 3]])
-:: > =b `(map @ @)`(malt ~[[1 1] [2 2] [3 3] [4 4] [5 5]])
+:: > =a `(map @ @)`(make ~[[1 1] [2 2] [3 3]])
+:: > =b `(map @ @)`(make ~[[1 1] [2 2] [3 3] [4 4] [5 5]])
 :: > a
 :: {[p=1 q=1] [p=2 q=2] [p=3 q=3]}
 :: > b
@@ -534,7 +546,7 @@
 ::
 :: Produces a list of key-value pairs in the map.
 :: Examples
-:: > =mymap `(map @ @)`(malt ~[[1 1] [2 2] [3 3] [4 4] [5 5]])
+:: > =mymap `(map @ @)`(make ~[[1 1] [2 2] [3 3] [4 4] [5 5]])
 :: > (tap mymap)
 :: ~[[p=4 q=4] [p=3 q=3] [p=2 q=2] [p=1 q=1] [p=5 q=5]]
 :: Source
@@ -547,7 +559,7 @@
 :: Transform key-value pairs in the map using the gate.
 :: Alias for +rut.
 :: Examples
-:: > =mymap `(map @ @)`(malt ~[[1 1] [2 2] [3 3] [4 4] [5 5]])
+:: > =mymap `(map @ @)`(make ~[[1 1] [2 2] [3 3] [4 4] [5 5]])
 :: > =gate |=  [k=@ v=@]
 ::         ?:  (gth v 2)
 ::           (mul k v)
@@ -561,7 +573,7 @@
 :: Transform values in the map using the gate.
 :: Alias for +run.
 :: Examples
-:: > =mymap `(map @t @)`(malt ~[['a' 1] ['b' 2] ['c' 3] ['d' 4] ['e' 5]])
+:: > =mymap `(map @t @)`(make ~[['a' 1] ['b' 2] ['c' 3] ['d' 4] ['e' 5]])
 :: > `(map @t @)`(transform-value mymap dec)
 :: {[p='e' q=4] [p='b' q=1] [p='d' q=3] [p='a' q=0] [p='c' q=2]}
 :: Source
@@ -574,7 +586,7 @@
 :: and yields a product like [accumulator [key value]].
 :: Alias for +rib.
 :: Examples
-:: > =mymap `(map @t @)`(malt ~[['a' 1] ['b' 2] ['c' 3] ['d' 4] ['e' 5]])
+:: > =mymap `(map @t @)`(make ~[['a' 1] ['b' 2] ['c' 3] ['d' 4] ['e' 5]])
 :: > mymap
 :: {[p='e' q=5] [p='b' q=2] [p='d' q=4] [p='a' q=1] [p='c' q=3]}
 :: 
@@ -592,8 +604,8 @@
 :: Produces a map of the union of two maps of the same type.
 :: In case of conflict, the value from the first map is used.
 :: Examples
-:: > =a `(map @ @)`(malt ~[[1 1] [2 2] [3 3]])
-:: > =b `(map @ @)`(malt ~[[3 300] [4 400] [5 500]])
+:: > =a `(map @ @)`(make ~[[1 1] [2 2] [3 3]])
+:: > =b `(map @ @)`(make ~[[3 300] [4 400] [5 500]])
 :: > a
 :: {[p=1 q=1] [p=2 q=2] [p=3 q=3]}
 :: > b
@@ -609,8 +621,8 @@
 :: In case of conflict, the value from the first map is used.
 :: Alias for +uni.
 :: Examples
-:: > =a `(map @ @)`(malt ~[[1 1] [2 2] [3 3]])
-:: > =b `(map @ @)`(malt ~[[3 300] [4 400] [5 500]])
+:: > =a `(map @ @)`(make ~[[1 1] [2 2] [3 3]])
+:: > =b `(map @ @)`(make ~[[3 300] [4 400] [5 500]])
 :: > a
 :: {[p=1 q=1] [p=2 q=2] [p=3 q=3]}
 :: > b
@@ -626,8 +638,8 @@
 :: is applied to both and its product is used as the new
 :: value of the key in question.
 :: Examples
-:: > =a `(map @ @)`(malt ~[[1 1] [2 2] [3 3]])
-:: > =b `(map @ @)`(malt ~[[3 3] [4 4] [5 5]])
+:: > =a `(map @ @)`(make ~[[1 1] [2 2] [3 3]])
+:: > =b `(map @ @)`(make ~[[3 3] [4 4] [5 5]])
 :: > a
 :: {[p=1 q=1] [p=2 q=2] [p=3 q=3]}
 :: > b
@@ -646,8 +658,8 @@
 :: is applied to both and its product is used as the new
 :: value of the key in question.  Alias for +uno.
 :: Examples
-:: > =a `(map @ @)`(malt ~[[1 1] [2 2] [3 3]])
-:: > =b `(map @ @)`(malt ~[[3 3] [4 4] [5 5]])
+:: > =a `(map @ @)`(make ~[[1 1] [2 2] [3 3]])
+:: > =b `(map @ @)`(make ~[[3 3] [4 4] [5 5]])
 :: > a
 :: {[p=1 q=1] [p=2 q=2] [p=3 q=3]}
 :: > b
@@ -663,7 +675,7 @@
 :: a new map with the same keys as the input map, but
 :: with the values transformed by the gate.
 :: Examples
-:: > =mymap `(map @ @)`(malt ~[[1 1] [2 2] [3 3]])
+:: > =mymap `(map @ @)`(make ~[[1 1] [2 2] [3 3]])
 :: > mymap
 :: {[p=1 q=1] [p=2 q=2] [p=3 q=3]}
 :: 
@@ -677,8 +689,8 @@
 ::
 :: Produces the depth (size) of the map.
 :: Examples
-:: > =a `(map @ @)`(malt ~[[1 1] [2 2] [3 3]])
-:: > =b `(map @ @)`(malt ~[[1 1] [2 2] [3 3] [4 4] [5 5]])
+:: > =a `(map @ @)`(make ~[[1 1] [2 2] [3 3]])
+:: > =b `(map @ @)`(make ~[[1 1] [2 2] [3 3] [4 4] [5 5]])
 :: > a
 :: {[p=1 q=1] [p=2 q=2] [p=3 q=3]}
 :: > b
@@ -693,11 +705,11 @@
   |*  [m=(map)]
   ^-  @
   ~(wyt by m)
-:: +val: (map) -> @
+:: +val: (map) -> (list)
 ::
 :: Produces the list of values in map.
 :: Examples
-:: > =mymap `(map @t @)`(malt ~[['a' 1] ['b' 2] ['c' 3]])
+:: > =mymap `(map @t @)`(make ~[['a' 1] ['b' 2] ['c' 3]])
 :: > mymap
 :: {[p='b' q=2] [p='a' q=1] [p='c' q=3]}
 :: > (val mymap)
@@ -706,11 +718,11 @@
 ++  val
   |*  [m=(map)]
   ~(val by m)
-:: +values: (map) -> @
+:: +values: (map) -> (list)
 ::
 :: Produces the list of values in map.  Alias for +val.
 :: Examples
-:: > =mymap `(map @t @)`(malt ~[['a' 1] ['b' 2] ['c' 3]])
+:: > =mymap `(map @t @)`(make ~[['a' 1] ['b' 2] ['c' 3]])
 :: > mymap
 :: {[p='b' q=2] [p='a' q=1] [p='c' q=3]}
 :: > (values mymap)
