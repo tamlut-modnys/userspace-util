@@ -1,7 +1,7 @@
   ::  /lib/map
 ::::  Utilities to replicate ++by behavior via gates.
 ::
-|%
+|@
 :: +all: [(map) gate] -> ?
 ::
 :: Computes the logical AND on the results of slamming

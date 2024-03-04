@@ -87,7 +87,19 @@ Nothing clever or twee!
   - `++wyt`
   - `++values`
 - `/lib/maplist` for gate-based replacements for door arms in `++ja` for `+$jar`s (`map` of `list`).
+  - `++add`
+  - `++del`
+  - `++gas`
+  - `++get`
+  - `++has`
+  - `++make`
 - `/lib/mapset` for gate-based replacements for door arms in `++ju` for `+$jug`s (`map` of `set`).
+  - `++del`
+  - `++gas`
+  - `++get`
+  - `++has`
+  - `++make`
+  - `++put`
 - `/lib/mip` for gate-based replacements for door arms for `+$mip`s (`map` of `map`).
 - `/lib/mop` for gate-based replacements for door arms for `+$mop`s.
 - `/lib/list` for list functions (e.g. `++append` for `++weld`).

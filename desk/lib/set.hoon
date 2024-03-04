@@ -1,7 +1,7 @@
   ::  /lib/set
 ::::  Utilities to replicate ++in behavior via gates.
 ::
-|%
+|@
 :: +all: [(set) gate] -> ?
 ::
 :: Computes the logical AND on the results of slamming
