@@ -417,6 +417,17 @@
 :: {8 5 7 6 4}
 :: Source
 ++  union  uni
+:: +values: (set) -> (list)
+::
+:: Produces the list of values in set.  Alias for +tap.
+:: Examples
+:: > =myset `(set @t)`(make ~['a' 'b' 'c'])
+:: > myset
+:: {'b' 'a' 'c'}
+:: > (values myset)
+:: ~['b' 'a' 'c']
+:: Source
+++  values  tap
 :: +wyt: (set) -> @
 ::
 :: Produces the depth (size) of the set.
@@ -437,15 +448,4 @@
   |*  [s=(set)]
   ^-  @
   ~(wyt in s)
-:: +values: (set) -> (list)
-::
-:: Produces the list of values in set.  Alias for +tap.
-:: Examples
-:: > =myset `(set @t)`(make ~['a' 'b' 'c'])
-:: > myset
-:: {'b' 'a' 'c'}
-:: > (values myset)
-:: ~['b' 'a' 'c']
-:: Source
-++  values  tap
 --

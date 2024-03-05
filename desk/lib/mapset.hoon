@@ -4,6 +4,7 @@
 ::  A jug is a (map (set)).  Because it is a map, the
 ::  ++by functions can also be utilized with it directly.
 ::
+/+  libmap=map
 |@
 :: +del: [(jar) noun] -> (jar)
 ::
@@ -99,4 +100,53 @@
 ++  put
   |*  [j=(jug) k=* v=*]
   (~(put ju j) k v)
+::
+:: Other arms do not need special-case handling for jars.
+::
+++  all  all:libmap
+++  and  and:libmap
+++  any  any:libmap
+++  apply  apply:libmap
+++  apt  apt:libmap
+++  bif  bif:libmap
+:: ++  del  del:libmap
+++  dif  dif:libmap
+++  diff-left  diff-left:libmap
+++  diff-right  diff-right:libmap
+++  diff-symmetric  diff-symmetric:libmap
+++  dig  dig:libmap
+++  filter  filter:libmap
+:: ++  gas  gas:libmap
+:: ++  get  get:libmap
+++  got  got:libmap
+++  gut  gut:libmap
+:: ++  has  has:libmap
+++  int  int:libmap
+++  intersect  intersect:libmap
+++  jab  jab:libmap
+++  key  key:libmap
+++  keys  keys:libmap
+++  mar  mar:libmap
+:: ++  make  make:libmap
+++  or  or:libmap
+++  pairs  pairs:libmap
+:: ++  put  put:libmap
+++  reduce  reduce:libmap
+++  rep  rep:libmap
+++  rib  rib:libmap
+++  run  run:libmap
+++  rut  rut:libmap
+++  size  size:libmap
+++  tap  tap:libmap
+++  transform-key-value  transform-key-value:libmap
+++  transform-value  transform-value:libmap
+++  transform-product  transform-product:libmap
+++  uni  uni:libmap
+++  union  union:libmap
+++  uno  uno:libmap
+++  unify  unify:libmap
+++  urn  urn:libmap
+++  val  val:libmap
+++  values  values:libmap
+++  wyt  wyt:libmap
 --

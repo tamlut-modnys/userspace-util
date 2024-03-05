@@ -685,26 +685,6 @@
 ++  urn
   |*  [m=(map) g=gate]
   (~(urn by m) g)
-:: +wyt: (map) -> @
-::
-:: Produces the depth (size) of the map.
-:: Examples
-:: > =a `(map @ @)`(make ~[[1 1] [2 2] [3 3]])
-:: > =b `(map @ @)`(make ~[[1 1] [2 2] [3 3] [4 4] [5 5]])
-:: > a
-:: {[p=1 q=1] [p=2 q=2] [p=3 q=3]}
-:: > b
-:: {[p=5 q=5] [p=1 q=1] [p=2 q=2] [p=3 q=3] [p=4 q=4]}
-:: 
-:: > (wyt a)
-:: 3
-:: > (wyt b)
-:: 5
-:: Source
-++  wyt
-  |*  [m=(map)]
-  ^-  @
-  ~(wyt by m)
 :: +val: (map) -> (list)
 ::
 :: Produces the list of values in map.
@@ -729,4 +709,24 @@
 :: ~[3 1 2]
 :: Source
 ++  values  val
+:: +wyt: (map) -> @
+::
+:: Produces the depth (size) of the map.
+:: Examples
+:: > =a `(map @ @)`(make ~[[1 1] [2 2] [3 3]])
+:: > =b `(map @ @)`(make ~[[1 1] [2 2] [3 3] [4 4] [5 5]])
+:: > a
+:: {[p=1 q=1] [p=2 q=2] [p=3 q=3]}
+:: > b
+:: {[p=5 q=5] [p=1 q=1] [p=2 q=2] [p=3 q=3] [p=4 q=4]}
+:: 
+:: > (wyt a)
+:: 3
+:: > (wyt b)
+:: 5
+:: Source
+++  wyt
+  |*  [m=(map)]
+  ^-  @
+  ~(wyt by m)
 --
