@@ -102,7 +102,31 @@ Nothing clever or twee!
   - `++put`
 - `/lib/mip` for gate-based replacements for door arms for `+$mip`s (`map` of `map`).
 - `/lib/mop` for gate-based replacements for door arms for `+$mop`s.
-- `/lib/list` for list functions (e.g. `++append` for `++weld`).
+- `/lib/list` for list functions (e.g. `++append` for `++weld`).  Unlike the others, this is merely a renaming of existing arms.
+  - `after` ← `slag`
+  - `and-each` ← `levy`
+  - `any-each` ← `lien`
+  - `append` ← `snoc`
+  - `apply` ← `turn`
+  - `before` ← `scag`
+  - `concat` ← `weld`
+  - `except` ← `skip`
+  - `filter` ← `skim`
+  - `find-all` ← `fand`
+  - `flatten` ← `zing`
+  - `fold-l` ← `roll`
+  - `fold-r` ← `reel`
+  - `insert` ← `into`
+  - `item` ← `snag`
+  - `length` ← `lent`
+  - `maybe` ← `murn`
+  - `range` ← `gulf`
+  - `remove` ← `oust`
+  - `repeat` ← `reap`
+  - `reverse` ← `flop`
+  - `split-at` ← `skid`
+  - `substring` ← `swag`
+  - `swap` ← `snap`
 
 ##  Related Projects
 
