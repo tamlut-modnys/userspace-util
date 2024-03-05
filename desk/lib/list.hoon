@@ -14,6 +14,7 @@
 ++  filter  skim
 :: ++  find  find
 ++  find-all  fand
+++  flatten  zing
 ++  fold-l  roll
 ++  fold-r  reel
 ++  insert  into
@@ -34,5 +35,4 @@
 :: ++  spin  spin
 :: ++  spun  spun
 :: ++  welp  welp
-++  flatten  zing
 --
