@@ -116,10 +116,8 @@
 ++  rep  rep:libmap
 ++  rib  rib:libmap
 ++  run  run:libmap
-++  rut  rut:libmap
 ++  size  size:libmap
 ++  tap  tap:libmap
-++  transform-key-value  transform-key-value:libmap
 ++  transform-value  transform-value:libmap
 ++  transform-product  transform-product:libmap
 ++  uni  uni:libmap

@@ -509,22 +509,6 @@
   |*  [m=(map) g=gate]
   ^+  m
   (~(run by m) g)
-:: +rut: [(map) gate] -> (map)
-::
-:: Transform key-value pairs in the map using the gate.
-:: Examples
-:: > =mymap `(map @ @)`(make ~[[1 1] [2 2] [3 3] [4 4] [5 5]])
-:: > =gate |=  [k=@ v=@]
-::         ?:  (gth v 2)
-::           (mul k v)
-::         v
-:: > `(map @ @)`(rut mymap gate)
-:: {[p=5 q=25] [p=1 q=1] [p=2 q=2] [p=3 q=9] [p=4 q=16]}
-:: Source
-++  rut
-  |*  [m=(map) g=gate]
-  ^+  m
-  (~(rut by m) g)
 :: +size: (map) -> @
 ::
 :: Produces the depth (size) of the map.  Alias for +wyt.
@@ -554,20 +538,6 @@
   |*  [m=(map)]
   ^-  (list _?>(?=(^ m) n.m))
   ~(tap by m)
-:: +transform-key-value: [(map) gate] -> (map)
-::
-:: Transform key-value pairs in the map using the gate.
-:: Alias for +rut.
-:: Examples
-:: > =mymap `(map @ @)`(make ~[[1 1] [2 2] [3 3] [4 4] [5 5]])
-:: > =gate |=  [k=@ v=@]
-::         ?:  (gth v 2)
-::           (mul k v)
-::         v
-:: > `(map @ @)`(transform-key-value mymap gate)
-:: {[p=5 q=25] [p=1 q=1] [p=2 q=2] [p=3 q=9] [p=4 q=16]}
-:: Source
-++  transform-key-value  rut
 :: +transform-value: [(map) gate] -> (map)
 ::
 :: Transform values in the map using the gate.
