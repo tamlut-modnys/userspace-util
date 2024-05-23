@@ -1,5 +1,7 @@
 #   Userspace Utility Libraries
 
+**Status ~2024.5.23: PRed to be shipped in `%base` with the standard Urbit release.**
+
 Design objectives:
 
 1. Provide alternative names for common library functions in `/sys/hoon` and `/sys/zuse` which are legible to developers new to Urbit.
